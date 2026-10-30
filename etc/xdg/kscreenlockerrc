@@ -1,0 +1,7 @@
+[Daemon]
+Autolock=false
+LockOnResume=false
+
+[Greeter][Wallpaper][org.kde.image][General]
+Image=file:///usr/share/wallpapers/nobara-winds1.webp
+SlidePaths=/usr/share/wallpapers/
