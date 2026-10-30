@@ -1,6 +1,6 @@
 # nobara-6-8-3: plan
 
-Status (2026-10-29): user-facing steps 1–5 and the runtime/performance audit
+Status (2026-10-29): v0.2.0 (GTK wrapper) released on GitHub and AUR. User-facing steps 1–5 and the runtime/performance audit
 are complete. Local Arch package plasma6-themes-nobara-fixed 0.1.0-1 builds and
 passes exact-payload, KDE loader and existing structural/runtime checks. The
 binary excludes unrepaired Aurorae and source templates, retained in the source
@@ -37,8 +37,8 @@ Keep:
   appearance choice. Do not enable it by default.
 - Nobara Konsole profile and color scheme (`usr/share/konsole/Nobara.profile`
   and `Nobara.colorscheme`).
-- Nobara GTK 3/4 theme files and their required assets
-  (`usr/share/themes/Nobara/`).
+- Nobara GTK 3/4 theme (`usr/share/themes/Nobara/`), as a wrapper importing
+  the installed Breeze GTK (since 2026-10-29; upstream was a Breeze 5.27.6 copy).
 
 Remove from the working payload when implementing:
 
@@ -84,6 +84,9 @@ Reviewed KDE's plasma-login-manager at tag `v6.8.2` and the installed package
   explicitly import Breeze-Dark. Preserve both. Fixed dark imports to use the
   system-wide provider so per-user installs work; require `breeze-gtk` in any
   future package. No global GTK preferences or colors are changed.
+  2026-10-29 (user: "do it"): the main stylesheets proved to be a byte-identical
+  Breeze GTK 5.27.6 copy (all 167 assets too). Replaced with imports of the
+  installed Breeze GTK; renders pixel-identical to stock Breeze. Released 0.2.0.
 - **D4: resolved.** Remove the distro `etc/` defaults.
 - **D5: preserve upstream appearance for now.** Blue Plasma accents vs purple
   application accents are a visual choice, not an approved restyle. No need to
@@ -108,8 +111,8 @@ See ICONS.md; regenerate with `tools/build-icons.py --build`, check with `--chec
 
 User decision (2026-10-29): **require `papirus-icon-theme`** in the
 package's `depends` (not `optdepends`). Do not bundle the full icon set.
-Required compatibility dependency: `breeze-gtk`, supplying the existing dark
-GTK 3/4 appearance. Both are required by the local PKGBUILD and documented in PACKAGING.md.
+Required compatibility dependency: `breeze-gtk`, supplying the whole
+GTK 3/4 theme through the wrapper imports. Both are required by the local PKGBUILD and documented in PACKAGING.md.
 
 Plasma Login activation is documented in PLASMA-LOGIN.md. Use system-wide assets
 and the existing settings module; do not install config files or privileged
@@ -150,9 +153,12 @@ an explicit user action after installation.
    source/runtime checks pass. namcap has no errors; ten warnings reviewed.
    PACKAGING.md covers build, dependencies, installation/removal, remaining live
    checks and requirements before any later publication. No installation.
-7. Later optional work: repair/package the Aurorae decoration with its own
+7. Done 2026-10-29: GTK 3/4 wrapper over the installed Breeze GTK (Claude
+   Code). Source manifest 1,950 -> 1,783 files. Released as v0.2.0 (GitHub
+   release + AUR 0.2.0-1) at the user's request.
+8. Later optional work: repair/package the Aurorae decoration with its own
    theme directory and test it before offering installation.
-8. Only on user request: install/apply, commit, create/push GitHub, publish to AUR.
+9. Only on user request: install/apply, commit, create/push GitHub, publish to AUR.
 
 ## Current handoff
 

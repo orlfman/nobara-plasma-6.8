@@ -63,6 +63,13 @@ try:
         path = share / f"themes/Nobara/gtk-{version}/gtk-dark.css"
         expected = f'@import url("file:///usr/share/themes/Breeze-Dark/gtk-{version}/gtk.css");'
         check(path.read_text().strip() == expected, f"dark GTK {version} must retain its Breeze Dark provider")
+        # The light theme is the installed Breeze GTK (the original was a verbatim
+        # Breeze 5.27.6 copy). Exactly one import, no copied rules or assets.
+        main = share / f"themes/Nobara/gtk-{version}/gtk.css"
+        rules = re.sub(r"/\*.*?\*/", "", main.read_text(), flags=re.S).strip()
+        expected = f'@import url("file:///usr/share/themes/Breeze/gtk-{version}/gtk.css");'
+        check(rules == expected, f"GTK {version} must only import the installed Breeze GTK")
+    check(not (share / "themes/Nobara/assets").exists(), "copied Breeze GTK assets remain")
 
     # CSS parsing does not necessarily detect missing image assets. Check URLs too.
     theme_css = sorted((share / "themes/Nobara").rglob("*.css"))

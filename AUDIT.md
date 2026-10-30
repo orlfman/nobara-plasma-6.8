@@ -13,6 +13,50 @@ original findings remain below as historical records.
 Priorities: P1 = fix before shipping anything, P2 = real bug or wrong behavior,
 P3 = cleanup, cosmetic, or dead code.
 
+## 2026-10-29: v0.2.0 release verification — Claude Code (Claude Opus 5.5)
+
+Release of the GTK 3/4 wrapper (entry below), at the user's request.
+
+- `packaging/PKGBUILD` 0.2.0-1; source from `tools/prepare-package.py`, pinned
+  SHA-256 in PKGBUILD/.SRCINFO and the release's SHA256SUMS.
+- makepkg build passes its check(): SOURCE MANIFEST PASSED (1,783), theme
+  defaults/CSS PASS, icon overlay PASS (1,705 links).
+- `check-package.py` on the built package: PACKAGE CHECK PASSED (1,783
+  files/links, 1,705 intact icon links, exact bytes/modes/ownership/deps).
+  `themes/Nobara` in the package is just the four wrapper/dark CSS files plus
+  `settings.ini`.
+- namcap: 0 errors, the same 10 reviewed warnings as 0.1.0 (PACKAGING.md).
+- `tools/check.sh` ALL CHECKS PASSED.
+- Limits as before: CachyOS build, not a clean Arch chroot; no live session test.
+  The release download and AUR build are verified after publishing (CHANGELOG).
+
+## 2026-10-29: GTK 3/4 wrapper (fixes N1) — Claude Code (Claude Opus 5.5)
+
+Change, at the user's request; unreleased (would be 0.2.0).
+
+- Provenance: compared Nobara's `gtk-{3,4}.0/gtk.css` with every Arch
+  `breeze-gtk` 5.27.0–6.8.0 package (archive.archlinux.org). They are
+  byte-identical to Breeze GTK 5.27.6 (also 5.27.7–5.27.10 and 5.90–5.93; 0 diff
+  lines); 5.27.5 differs by 282/0 lines, 6.0.0 by 18/18. All 167 retained
+  `assets/*.png` and `settings.ini` are byte-identical to 5.27.6's. So Nobara
+  made no GTK changes of its own; the "two border greys" in N1 are old Breeze.
+- Fix: each `gtk.css` is now a comment plus
+  `@import url("file:///usr/share/themes/Breeze/gtk-N.0/gtk.css");` (dark files
+  unchanged, importing Breeze-Dark). `themes/Nobara/assets/` removed (167 files).
+  Source manifest 1,950 -> 1,783 files/links. `breeze-gtk` already required.
+- Checks: all four GTK files parse with 0 errors (GTK 3.24 and GTK 4);
+  `check-theme.py` now enforces the import-only `gtk.css` and no `assets/`;
+  `check.sh` and `check-package.py` treat `themes/Nobara/assets` as excluded.
+  `tools/check.sh` ALL CHECKS PASSED; `check-package.py --source` PASSED (1,783).
+- Rendering: a GTK 3 sample window (buttons, toggles, entry, check/radio incl.
+  mixed, switch, scale, progress, combo, spin, notebook) rendered offscreen with
+  isolated `XDG_DATA_HOME`/`XDG_CONFIG_HOME`, light and dark, with and without
+  a copy of Plasma's `colors.css`. New wrapper vs stock Breeze: 0 differing
+  pixels in all four cases. Old copy vs new: dark identical; light differs in
+  86–134 px (old border greys and corner radius).
+- Limits: GTK 4 checked by parsing only (no render); not tested in the user's
+  live session or with the installed 0.1.0-1 package, which still has the copy.
+
 ## 2026-10-29: review of Codex's steps 1–5, release and AUR — Claude Code (Claude Opus 5.5)
 
 Reviewed `763b169..0e238ef` (theme HEAD `0e238ef`, tag `v0.1.0` = `854e6f3`),
@@ -52,7 +96,7 @@ Verified:
 
 New findings (none block the release):
 
-- **N1 [P3] The Nobara GTK theme is an old copy of Breeze GTK.** The main
+- **N1 [P3] The Nobara GTK theme is an old copy of Breeze GTK.** (Fixed by the GTK 3/4 wrapper entry above.) The main
   `gtk-3.0/gtk.css` and `gtk-4.0/gtk.css` define `theme_*_color_breeze` with
   Breeze light values and differ from the installed Breeze GTK 6.8.2 files by
   201 and 349 diff lines; the only hex colors that differ are two border

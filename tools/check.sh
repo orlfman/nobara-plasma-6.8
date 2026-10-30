@@ -15,7 +15,7 @@ lint_count() { "$qmllint" -I /usr/lib/qt6/qml "$1" 2>&1 | grep -c 'Warning' || t
 
 echo "== retained scope and excluded integration"
 for item in etc usr/lib/systemd usr/share/polkit-1 usr/share/sddm \
-    usr/share/themes/Nobara/gtk-2.0 \
+    usr/share/themes/Nobara/gtk-2.0 usr/share/themes/Nobara/assets \
     usr/share/plasma/plasmoids/com.kde.plasma.nobara.runcommand \
     usr/share/plasma/look-and-feel/org.nobaraproject.desktop/contents/lockscreen; do
     [ ! -e "$root/$item" ] || fail "excluded component remains: $item"
@@ -31,7 +31,7 @@ for item in color-schemes/Nobara.colors plasma/desktoptheme/Nobara \
     icons/hicolor/scalable/actions/nobara-desktop-hide-symbolic.svg \
     konsole/Nobara.profile konsole/Nobara.colorscheme \
     themes/Nobara/gtk-3.0 themes/Nobara/gtk-4.0 \
-    themes/Nobara/assets aurorae/themes/Nobara aurorae/themes/metadata.desktop; do
+    aurorae/themes/Nobara aurorae/themes/metadata.desktop; do
     [ -e "$share/$item" ] || fail "retained resource missing: usr/share/$item"
 done
 # Excluded helper names must not survive in scripts, layouts, or configuration.

@@ -19,7 +19,7 @@ default application style and window decoration.
 | Papirus-Dark icons with violet folders and Nobara branding | `usr/share/icons/Nobara`, `usr/share/icons/hicolor` |
 | Nobara wallpapers, including Nobara Winds | `usr/share/wallpapers` |
 | Plasma Login wallpaper | `usr/share/plasmalogin/wallpapers/nobara` |
-| Nobara GTK 3/4 theme | `usr/share/themes/Nobara` |
+| Nobara GTK 3/4 theme (current Breeze GTK under the Nobara name) | `usr/share/themes/Nobara` |
 | Nobara Konsole profile and colors | `usr/share/konsole` |
 
 Original Aurorae decoration artwork is retained in `usr/share/aurorae` for
@@ -37,6 +37,8 @@ Details and evidence are in [CHANGELOG.md](CHANGELOG.md) and [AUDIT.md](AUDIT.md
   native small icons without modifying the installed Papirus theme.
 - Fixed GTK dark imports to find the required system Breeze-Dark theme.
 - Removed GTK 2 and its exclusive assets, plus an unused broken GTK template.
+- Nobara's GTK 3/4 theme was an unmodified copy of Breeze GTK 5.27.6; it now
+  imports the installed Breeze GTK, so it stays current with Plasma.
 - Removed an invisible infinite splash animation that caused continuous redraws.
   The settled splash image is unchanged.
 - Removed hidden setup commands and distribution-wide configuration changes.
@@ -47,8 +49,8 @@ Konsole's ANSI black still matches its background, as it does upstream.
 ## Install on Arch Linux
 
 A local package recipe is included as **`plasma6-themes-nobara-fixed`**,
-version `0.1.0-1`. Download the source and prebuilt Arch package from
-[release v0.1.0](https://github.com/orlfman/nobara-plasma-6.8/releases/tag/v0.1.0).
+version `0.2.0-1`. Download the source and prebuilt Arch package from
+[release v0.2.0](https://github.com/orlfman/nobara-plasma-6.8/releases/tag/v0.2.0).
 Install from the AUR as
 [plasma6-themes-nobara-fixed](https://aur.archlinux.org/packages/plasma6-themes-nobara-fixed),
 matching the naming of the Vapor package. With an AUR helper such as paru:
@@ -68,10 +70,10 @@ makepkg -si
 To build the pinned GitHub release directly, with the dependencies below installed:
 
 ```sh
-git clone --branch v0.1.0 https://github.com/orlfman/nobara-plasma-6.8.git
+git clone --branch v0.2.0 https://github.com/orlfman/nobara-plasma-6.8.git
 cd nobara-plasma-6.8
 (cd packaging && makepkg --cleanbuild --clean)
-sudo pacman -U packaging/plasma6-themes-nobara-fixed-0.1.0-1-any.pkg.tar.zst
+sudo pacman -U packaging/plasma6-themes-nobara-fixed-0.2.0-1-any.pkg.tar.zst
 ```
 
 Building requires Arch's `base-devel` tools and Python. Required runtime packages:
@@ -81,7 +83,7 @@ Building requires Arch's `base-devel` tools and Python. Required runtime package
 - **`papirus-icon-theme>=20260801`** — required, not optional
 
 Optional consumers are `konsole` and `plasma-login-manager`. Papirus supplies
-the icon artwork; Breeze GTK supplies the existing dark GTK variants.
+the icon artwork; Breeze GTK supplies the GTK 3/4 theme.
 
 The package installs appearance resources and documentation system-wide. It
 does not select a theme, replace your panel, synchronize login settings or
@@ -105,9 +107,11 @@ Icons can also be selected independently as **Nobara**. They inherit
 Papirus-Dark; folder colors and branding are overridden without recoloring or
 rewriting Papirus. See [ICONS.md](ICONS.md).
 
-Select the GTK theme through Plasma's GTK appearance settings. The main Nobara
-GTK 3/4 stylesheets are light; their dark variants use Breeze-Dark. No global
-dark preference is forced. Applications that ignore GTK themes may differ.
+Select the GTK theme through Plasma's GTK appearance settings. Nobara's GTK
+theme was always Breeze GTK (an unmodified 5.27.6 copy upstream); it now loads
+the installed Breeze and Breeze-Dark, so choosing **Nobara** or **Breeze** looks
+the same. GTK apps get Nobara's colors from Plasma's active color scheme, either
+way. No global dark preference is forced. Apps that ignore GTK themes may differ.
 
 In Konsole, select the **Nobara** profile or just its color scheme in your own
 profile to keep your current font and terminal preferences.

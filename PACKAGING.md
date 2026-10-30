@@ -1,12 +1,12 @@
 # Arch packaging
 
-The package is `plasma6-themes-nobara-fixed`, version `0.1.0-1`, architecture
+The package is `plasma6-themes-nobara-fixed`, version `0.2.0-1`, architecture
 `any`. This is the adaptation's own version, not Nobara's upstream version or a
 Plasma version. The AUR package is [plasma6-themes-nobara-fixed](https://aur.archlinux.org/packages/plasma6-themes-nobara-fixed),
 maintained by orlfman.
-Release v0.1.0 provides the pinned source archive, prebuilt Arch package,
+Release v0.2.0 provides the pinned source archive, prebuilt Arch package,
 PKGBUILD, .SRCINFO and SHA256SUMS on
-[GitHub Releases](https://github.com/orlfman/nobara-plasma-6.8/releases/tag/v0.1.0).
+[GitHub Releases](https://github.com/orlfman/nobara-plasma-6.8/releases/tag/v0.2.0).
 No package is installed or uploaded by the preparation/build commands below.
 
 ## Installed contents and dependencies
@@ -36,7 +36,7 @@ additional developer/runtime checks also need the tools described in AGENTS.md.
 
 ## Build the pinned release
 
-From a checkout of tag `v0.1.0`, run `makepkg --cleanbuild --clean` inside
+From a checkout of tag `v0.2.0`, run `makepkg --cleanbuild --clean` inside
 `packaging/`. The recipe downloads the versioned release source and verifies
 its SHA-256. Alternatively, place the downloaded source archive beside the
 recipe to build offline. Verify downloaded release assets with
@@ -53,7 +53,7 @@ makepkg --cleanbuild --clean
 ```
 
 The helper snapshots the **current working tree, including uncommitted changes**,
-into `packaging/plasma6-themes-nobara-fixed-0.1.0.tar.gz`. It includes retained
+into `packaging/plasma6-themes-nobara-fixed-0.2.0.tar.gz`. It includes retained
 source artwork, tools, notices and project notes. It excludes `.git`, build
 output and Python caches. It sets normalized ownership/modes/timestamps and gzip
 headers, producing the same source checksum for unchanged inputs. Source
@@ -63,7 +63,7 @@ to avoid a circular checksum. The helper writes the real SHA-256 into both.
 Rerun preparation after changes; do not use `SKIP` for integrity checks.
 
 `makepkg` verifies that checksum and runs the source manifest, theme and icon checks. It builds
-`packaging/plasma6-themes-nobara-fixed-0.1.0-1-any.pkg.tar.zst` with the default
+`packaging/plasma6-themes-nobara-fixed-0.2.0-1-any.pkg.tar.zst` with the default
 Arch configuration. A custom `PKGDEST` or package extension can change its path.
 These commands do not install missing dependencies: install build requirements
 separately if needed. No root privileges or network are needed once they exist.
@@ -71,8 +71,8 @@ separately if needed. No root privileges or network are needed once they exist.
 Verify the resulting package against this working tree:
 
 ```sh
-python3 -I tools/check-package.py packaging/plasma6-themes-nobara-fixed-0.1.0-1-any.pkg.tar.zst
-namcap packaging/PKGBUILD packaging/plasma6-themes-nobara-fixed-0.1.0-1-any.pkg.tar.zst
+python3 -I tools/check-package.py packaging/plasma6-themes-nobara-fixed-0.2.0-1-any.pkg.tar.zst
+namcap packaging/PKGBUILD packaging/plasma6-themes-nobara-fixed-0.2.0-1-any.pkg.tar.zst
 ```
 
 The package checker compares the full payload with the explicit manifest and
@@ -82,7 +82,7 @@ prepare and rebuild to refresh it. It never extracts into the live filesystem.
 
 ## Validation notes
 
-The local build and exact-content comparison pass, with 1,950 files/links and
+The local build and exact-content comparison pass, with 1,783 files/links (0.2.0; 0.1.0 had 1,950) and
 all 1,705 icon links preserved. The extracted package also passes KDE package,
 wallpaper, Plasma-style and icon-loader probes in temporary isolated settings.
 Structural/GTK/QML checks, four icon-builder recovery cases, four controller
@@ -102,7 +102,7 @@ not in a clean Arch build environment. A live desktop/login test remains pending
 After reviewing the package, install explicitly:
 
 ```sh
-sudo pacman -U packaging/plasma6-themes-nobara-fixed-0.1.0-1-any.pkg.tar.zst
+sudo pacman -U packaging/plasma6-themes-nobara-fixed-0.2.0-1-any.pkg.tar.zst
 ```
 
 Pacman handles required dependencies through the configured repositories. If a
@@ -136,13 +136,13 @@ artifacts, refresh .SRCINFO, then publish a new tag/release when authorized.
 The snapshot helper intentionally updates the checksum for local development;
 do not publish that updated recipe against an older release's source URL.
 
-Version 0.1.0-1 is submitted to AUR. The AUR Git checkout is maintained separately
+Versions 0.1.0-1 and 0.2.0-1 were published to AUR. The AUR Git checkout is maintained separately
 from the theme repository; only PKGBUILD and .SRCINFO are pushed there. Keep them
 in sync with packaging/ when a future update is authorized, and validate in a
 clean Arch build environment when available. The current submission was tested
 by a fresh public-source download/build on CachyOS, not a clean Arch chroot.
 GitHub publication does not automatically update AUR. Never regenerate or replace
-the existing v0.1.0 release assets to incorporate later documentation edits.
+existing release assets (v0.1.0, v0.2.0) to incorporate later documentation edits.
 
 Packaging conventions follow the official
 [PKGBUILD manual](https://man.archlinux.org/man/PKGBUILD.5.en) and

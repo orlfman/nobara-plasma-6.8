@@ -3,6 +3,28 @@
 Newest first. One entry per agent session: date, agent, what changed, check
 results, anything left half done, what's next. See `AGENTS.md` for the rules.
 
+## 2026-10-29, Claude Code (Claude Opus 5.5): release v0.2.0
+
+- User asked to release the GTK wrapper as 0.2.0. Bumped `packaging/PKGBUILD`
+  to 0.2.0-1; README and PACKAGING point at v0.2.0 (1,783 files/links).
+- Source snapshot via `tools/prepare-package.py`, package built with makepkg,
+  checked with `check-package.py` and namcap; then commit, tag v0.2.0, GitHub
+  release with the same five asset kinds as v0.1.0, and AUR update to 0.2.0-1.
+  Results are in AUDIT.md. v0.1.0 assets untouched. In progress: nobody.
+
+## 2026-10-29, Claude Code (Claude Opus 5.5): GTK 3/4 wrapper over Breeze GTK
+
+- User asked to fix the outdated GTK copy (AUDIT N1). Found Nobara's GTK 3/4
+  CSS, 167 images and settings.ini are byte-identical to Breeze GTK 5.27.6.
+- `usr/share/themes/Nobara/gtk-{3,4}.0/gtk.css` now import the installed Breeze
+  GTK; removed `themes/Nobara/assets/` (167 files). Dark files unchanged.
+- Checks updated (check-theme.py enforces the wrapper; check.sh and
+  check-package.py exclude `assets/`). All checks pass; manifest 1,783 files.
+- GTK 3 renders of a widget sample: wrapper = stock Breeze, 0 px difference,
+  light and dark, with and without Plasma's colors.css.
+- README, AGENTS, PLAN updated. Released as 0.2.0 (entry above).
+  The installed 0.1.0-1 still has the old copy. In progress: nobody.
+
 ## 2026-10-29, Claude Code (Claude Opus 5.5): review of Codex's work
 
 - At the user's request, audited Codex's steps 1–5, the v0.1.0 GitHub release,

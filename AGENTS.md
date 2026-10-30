@@ -20,10 +20,11 @@ User decision (2026-10-29): `papirus-icon-theme` is a **required dependency**
 for the theme package, not an optional dependency. Use the installed Papirus
 icons rather than bundling a full copy.
 
-Compatibility dependency: `breeze-gtk` is also required to preserve Nobara's
-existing GTK dark variants. They import the installed Breeze-Dark CSS through
-`file:///usr/share/themes/Breeze-Dark/gtk-{3,4}.0/gtk.css`. The main Nobara
-GTK stylesheets remain unchanged; do not force a GTK preference globally.
+Compatibility dependency: `breeze-gtk` is required. Nobara's GTK theme is a
+thin wrapper: `gtk.css` imports `file:///usr/share/themes/Breeze/gtk-{3,4}.0/gtk.css`
+and `gtk-dark.css` imports the Breeze-Dark one. (Upstream shipped a verbatim
+Breeze GTK 5.27.6 copy plus its 167 images; replaced 2026-10-29 at the user's
+request.) Don't copy Breeze CSS or assets back in; don't force a GTK preference.
 
 It is the second project of this kind: the
 first was the SteamOS Vapor theme in `../steamos-vapor-6-8-3` (public at
@@ -174,7 +175,7 @@ Run after every change, from this folder:
 - The user installed `plasma6-themes-nobara-fixed 0.1.0-1` from the AUR with
   paru (2026-10-29 22:04); its files equal this repo at `0e238ef`. Ask before
   reinstalling, upgrading or removing it, or changing the active theme.
-- `breeze-gtk 6.8.2-1` is installed (confirmed during step 2) and is required
-  by the preserved dark GTK variants. GTK 3/4 CSS parsing passes. GTK 2 was
+- `breeze-gtk 6.8.2-1` is installed (confirmed during step 2) and supplies
+  the whole Nobara GTK 3/4 theme through the wrapper imports. GTK 3/4 CSS parsing passes. GTK 2 was
   removed at the user's request during step 4. Live app appearance still needs
   checking after installation.

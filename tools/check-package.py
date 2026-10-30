@@ -13,7 +13,7 @@ import tarfile
 ROOT = Path(__file__).resolve().parent.parent
 NAME = 'plasma6-themes-nobara-fixed'
 FORBIDDEN = ('usr/share/aurorae/', 'usr/share/sddm/', 'usr/share/polkit-1/',
-             'usr/share/themes/Nobara/gtk-2.0/',
+             'usr/share/themes/Nobara/gtk-2.0/', 'usr/share/themes/Nobara/assets/',
              'usr/share/plasma/desktoptheme/Nobara/_templates/',
              'usr/share/plasma/look-and-feel/org.nobaraproject.desktop/contents/lockscreen/',
              'usr/share/plasma/plasmoids/com.kde.plasma.nobara.runcommand/')
