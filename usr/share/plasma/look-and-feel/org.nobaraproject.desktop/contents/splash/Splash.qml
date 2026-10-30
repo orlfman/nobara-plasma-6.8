@@ -37,34 +37,6 @@ Image {
             sourceSize.width: size
             sourceSize.height: size
 
-            ParallelAnimation {
-                running: true
-
-                ScaleAnimator {
-                    target: logo
-                    from: 0
-                    to: 1
-                    duration: 700
-                }
-
-                SequentialAnimation {
-                    loops: Animation.Infinite
-
-                    ScaleAnimator {
-                        target: logo
-                        from: 0.97
-                        to: 1
-                        duration: 1000
-                    }
-                    ScaleAnimator {
-                        target: logo
-                        from: 1
-                        to: 0.97
-                        duration: 1000
-                    }
-                }
-            }
-
         }
 
 
@@ -83,7 +55,7 @@ Image {
                     top: parent.top
                     bottom: parent.bottom
                 }
-                width: (parent.width / 6) * (stage - 1)
+                width: (parent.width / 6) * (root.stage - 1)
                 color: "#ffffff"
                 Behavior on width {
                     PropertyAnimation {

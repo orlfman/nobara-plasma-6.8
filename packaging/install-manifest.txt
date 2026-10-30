@@ -1,0 +1,21 @@
+# Paths relative to the source root, installed under /usr by package().
+# Directories include all descendants. Do not add overlapping paths.
+# Aurorae and desktoptheme/_templates remain source-only.
+usr/share/color-schemes/Nobara.colors
+usr/share/icons/Nobara
+usr/share/icons/hicolor/scalable/places/nobara-app-menu-icon.svg
+usr/share/icons/hicolor/scalable/actions/nobara-desktop-show-symbolic.svg
+usr/share/icons/hicolor/scalable/actions/nobara-desktop-hide-symbolic.svg
+usr/share/konsole/Nobara.profile
+usr/share/konsole/Nobara.colorscheme
+usr/share/plasma/desktoptheme/Nobara/colors
+usr/share/plasma/desktoptheme/Nobara/dialogs
+usr/share/plasma/desktoptheme/Nobara/widgets
+usr/share/plasma/desktoptheme/Nobara/metadata.json
+usr/share/plasma/desktoptheme/Nobara/plasmarc
+usr/share/plasma/layout-templates/org.kde.plasma.desktop.nobaraPanel
+usr/share/plasma/look-and-feel/org.nobaraproject.desktop
+usr/share/plasma/plasmoids/org.kde.plasma.nobara.showdesktop
+usr/share/plasmalogin/wallpapers/nobara
+usr/share/themes/Nobara
+usr/share/wallpapers

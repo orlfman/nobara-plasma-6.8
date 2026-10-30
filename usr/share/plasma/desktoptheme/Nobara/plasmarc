@@ -1,0 +1,14 @@
+[ContrastEffect]
+enabled=true
+contrast=1.0
+intensity=1.0
+saturation=1.0
+
+[Wallpaper]
+defaultFileSuffix=.webp
+defaultWallpaperTheme=Nobara
+defaultWidth=3840
+defaultHeight=2160
+
+[AdaptiveTransparency]
+enabled=true

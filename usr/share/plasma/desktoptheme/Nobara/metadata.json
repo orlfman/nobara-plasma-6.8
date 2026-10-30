@@ -9,7 +9,7 @@
         "Category": "",
         "Description": "Nobara - theme variant of KDE BreezeDark",
         "EnabledByDefault": true,
-        "Id": "org.nobaraproject.desktop",
+        "Id": "Nobara",
         "License": "GPLv2+",
         "Name": "Nobara",
         "Version": "0.01",

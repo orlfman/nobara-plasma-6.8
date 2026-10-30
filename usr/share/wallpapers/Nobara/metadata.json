@@ -1,0 +1,13 @@
+{
+    "KPackageStructure": "Wallpaper/Images",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Name": "Nobara Project"
+            }
+        ],
+        "Id": "Nobara",
+        "Name": "Nobara Winds",
+        "License": "GPL-2.0-only"
+    }
+}

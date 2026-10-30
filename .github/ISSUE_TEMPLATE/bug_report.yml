@@ -1,0 +1,37 @@
+name: Theme bug
+description: Report an appearance, packaging or Plasma compatibility problem.
+title: "[Bug]: "
+body:
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Distribution, Plasma and Qt versions; Papirus version for icon issues.
+    validations:
+      required: true
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      options:
+        - Plasma / global theme
+        - Icons
+        - Wallpapers
+        - Plasma Login
+        - GTK 3 / GTK 4
+        - Konsole
+        - Packaging
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps and expected result
+      description: Explain how to reproduce, what happened and what you expected.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Screenshots or relevant logs
+      description: Remove personal information before posting. Note your installation method and theme revision.

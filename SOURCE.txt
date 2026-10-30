@@ -2,4 +2,5 @@ Nobara KDE theme (kde-nobara 6.7.5, as shipped in Nobara), working copy for Plas
 Copied 2026-10-29 from https://github.com/Nobara-Project/nobara-core-packages
   directory kde-nobara/ at commit 4794fa0c5efa4abc62625f2cdc04a04441dc089f (2026-10-18)
 RPM spec: https://github.com/Nobara-Project/rpm-sources/blob/main/baseos/kde-nobara/kde-nobara.spec
-License: GPLv2 (LICENSE). Unmodified so far; untouched original in ../nobara/kde-nobara.
+License: GPLv2 (LICENSE). Modified working copy; see CHANGELOG.md and AUDIT.md.
+Untouched original in ../nobara/kde-nobara; git import baseline fd32ac5.

@@ -103,7 +103,7 @@ ForegroundPositive=76,175,80
 ForegroundVisited=173,101,175
 
 [General]
-ColorScheme=MateriaDark
+ColorScheme=Nobara
 Name=Nobara
 shadeSortColumn=true
 

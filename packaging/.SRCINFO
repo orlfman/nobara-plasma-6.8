@@ -1,0 +1,25 @@
+pkgbase = plasma6-themes-nobara-fixed
+	pkgdesc = Nobara appearance for Plasma 6.8 with wallpapers, icons, GTK and Konsole themes
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/orlfman/nobara-plasma-6.8
+	arch = any
+	license = GPL-2.0-only
+	license = GPL-2.0-or-later
+	license = GPL-3.0-only
+	license = LGPL-2.0-or-later
+	checkdepends = python
+	depends = plasma-workspace>=6.8
+	depends = plasma-desktop>=6.8
+	depends = breeze>=6.8
+	depends = breeze-cursors>=6.8
+	depends = breeze-gtk>=6.8
+	depends = papirus-icon-theme>=20260801
+	optdepends = konsole: use the Nobara terminal profile and colors
+	optdepends = plasma-login-manager: apply Nobara appearance to the Plasma login screen
+	options = !strip
+	options = !debug
+	source = plasma6-themes-nobara-fixed-0.1.0.tar.gz
+	sha256sums = 78daeb19e6132bdbae2e5c41cd7053010bd8108529058a27817b643fcfdcad7e
+
+pkgname = plasma6-themes-nobara-fixed
