@@ -3,6 +3,22 @@
 Newest first. One entry per agent session: date, agent, what changed, check
 results, anything left half done, what's next. See `AGENTS.md` for the rules.
 
+## 2026-10-29, Codex (GPT-6): AUR submission
+
+- User requested AUR publication and a name matching the Vapor package.
+  Submitted plasma6-themes-nobara-fixed 0.1.0-1 under orlfman, using existing
+  AUR SSH authentication. Separate checkout: ../aur-plasma6-themes-nobara-fixed.
+- Confirmed name availability; AUR Nobara search showed no overlapping Plasma
+  theme. Downloaded the pinned v0.1.0 source from GitHub in a fresh /tmp build
+  directory; checksum, makepkg checks/build and exact 1,950-file payload pass.
+- All 1,705 icon links preserved; generated .SRCINFO matches the recipe.
+  namcap has no errors and ten previously reviewed data/transitive warnings.
+  Fresh CachyOS build, not a clean Arch chroot; live-testing limits unchanged.
+- AUR root commit 132ec3e contains only PKGBUILD and .SRCINFO. Push succeeded;
+  SSH list-repos and the public RPC confirm ownership/version. Updated GitHub install instructions and
+  shared handoff/audit notes; no release archive/tag was replaced or rebuilt.
+- No system installation or session changes. In progress: nobody.
+
 ## 2026-10-29, Codex (GPT-6): v0.1.0 GitHub release
 
 - User authorized release publication. Prepared tag/release v0.1.0 with the

@@ -6,7 +6,7 @@ passes exact-payload, KDE loader and existing structural/runtime checks. The
 binary excludes unrepaired Aurorae and source templates, retained in the source
 archive. Public source repository: https://github.com/orlfman/nobara-plasma-6.8.
 Stages 1–5 and GitHub setup are recorded in the initial adaptation commit.
-GitHub release v0.1.0 provides source and an Arch package. No installation or AUR upload; live visual/login/GPU testing
+GitHub release v0.1.0 provides source and an Arch package. AUR package plasma6-themes-nobara-fixed 0.1.0-1 is submitted; no installation; live visual/login/GPU testing
 and optional Aurorae repair remain deferred.
 
 In progress: nobody.
@@ -95,7 +95,7 @@ Reviewed KDE's plasma-login-manager at tag `v6.8.2` and the installed package
 - **D8: partially resolved.** Keep the Nobara Konsole theme (user confirmed
   2026-10-29). No Alacritty theme requested. The stage-5 local working package name is
   plasma6-themes-nobara-fixed; public repository is orlfman/nobara-plasma-6.8;
-  v0.1.0 is released; later releases and AUR publication require a request.
+  v0.1.0 and AUR 0.1.0-1 are published; later releases/updates require a request.
 
 ## Icons: implemented in step 3
 
@@ -161,14 +161,14 @@ https://github.com/orlfman/nobara-plasma-6.8. README follows the Vapor project
 structure; contribution guidance and a bug-report form are included. Original
 import history and author/license notices are preserved. Generated source and
 binary archives remain ignored by Git; v0.1.0 publishes them as release assets,
-with the build recipe and checksums. No AUR upload.
+with the build recipe and checksums. AUR package plasma6-themes-nobara-fixed 0.1.0-1 is submitted.
 
 The local package and source snapshot are in packaging/. Regenerate after
 source/docs changes, rebuild and compare against the current tree. A release checkout
 can build directly with makepkg using the pinned downloadable source. Development
 snapshots use tools/prepare-package.py. Bump the version before publishing new
-source; never overwrite a published release asset. AUR submission still needs
-a separate request and clean-Arch validation. See PACKAGING.md.
+source; never overwrite a published release asset. AUR updates need
+a separate request; clean-Arch validation remains pending. See PACKAGING.md.
 
 Full structural/GTK/QML checks, four icon-builder recovery cases, isolated splash/
 controller regressions and extracted-package KDE/icon probes pass. The package
@@ -177,3 +177,10 @@ integration are absent. Aurorae/_templates are source-only. Live KWin/session/
 login authentication, monitor/accessibility behavior and live GPU performance
 remain unvalidated. See AUDIT.md and PERFORMANCE.md for evidence and limits.
 No system package installation or theme activation was requested.
+
+AUR checkout: ../aur-plasma6-themes-nobara-fixed (master, SSH origin). Fresh
+public-source build, checksum, full payload comparison and metadata checks pass;
+namcap has zero errors and the ten previously reviewed warnings. Only the recipe
+and .SRCINFO are published to AUR. GitHub main documentation now describes AUR;
+v0.1.0 tag/assets remain unchanged. Compare published packages against the matching
+release checkout, not later edited documentation on main.

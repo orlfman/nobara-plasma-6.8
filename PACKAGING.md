@@ -1,8 +1,9 @@
 # Arch packaging
 
-The local package is `plasma6-themes-nobara-fixed`, version `0.1.0-1`, architecture
+The package is `plasma6-themes-nobara-fixed`, version `0.1.0-1`, architecture
 `any`. This is the adaptation's own version, not Nobara's upstream version or a
-Plasma version. The name is a local working name; no AUR name has been reserved.
+Plasma version. The AUR package is [plasma6-themes-nobara-fixed](https://aur.archlinux.org/packages/plasma6-themes-nobara-fixed),
+maintained by orlfman.
 Release v0.1.0 provides the pinned source archive, prebuilt Arch package,
 PKGBUILD, .SRCINFO and SHA256SUMS on
 [GitHub Releases](https://github.com/orlfman/nobara-plasma-6.8/releases/tag/v0.1.0).
@@ -135,9 +136,13 @@ artifacts, refresh .SRCINFO, then publish a new tag/release when authorized.
 The snapshot helper intentionally updates the checksum for local development;
 do not publish that updated recipe against an older release's source URL.
 
-No AUR upload has been made. Before submission, review the package name/version
-and validate in a clean Arch build environment. GitHub release publication does
-not itself publish or update an AUR package.
+Version 0.1.0-1 is submitted to AUR. The AUR Git checkout is maintained separately
+from the theme repository; only PKGBUILD and .SRCINFO are pushed there. Keep them
+in sync with packaging/ when a future update is authorized, and validate in a
+clean Arch build environment when available. The current submission was tested
+by a fresh public-source download/build on CachyOS, not a clean Arch chroot.
+GitHub publication does not automatically update AUR. Never regenerate or replace
+the existing v0.1.0 release assets to incorporate later documentation edits.
 
 Packaging conventions follow the official
 [PKGBUILD manual](https://man.archlinux.org/man/PKGBUILD.5.en) and

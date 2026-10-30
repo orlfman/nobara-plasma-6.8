@@ -49,8 +49,23 @@ Konsole's ANSI black still matches its background, as it does upstream.
 A local package recipe is included as **`plasma6-themes-nobara-fixed`**,
 version `0.1.0-1`. Download the source and prebuilt Arch package from
 [release v0.1.0](https://github.com/orlfman/nobara-plasma-6.8/releases/tag/v0.1.0).
-It has **not been published to the AUR**. Build the pinned release from source
-with the dependencies below installed:
+Install from the AUR as
+[plasma6-themes-nobara-fixed](https://aur.archlinux.org/packages/plasma6-themes-nobara-fixed),
+matching the naming of the Vapor package. With an AUR helper such as paru:
+
+```sh
+paru -S plasma6-themes-nobara-fixed
+```
+
+Or build the AUR recipe manually:
+
+```sh
+git clone https://aur.archlinux.org/plasma6-themes-nobara-fixed.git
+cd plasma6-themes-nobara-fixed
+makepkg -si
+```
+
+To build the pinned GitHub release directly, with the dependencies below installed:
 
 ```sh
 git clone --branch v0.1.0 https://github.com/orlfman/nobara-plasma-6.8.git

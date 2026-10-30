@@ -59,6 +59,9 @@ to Nobara's files. An untouched second copy is in `../nobara/kde-nobara`.
 - `PERFORMANCE.md`: measured splash/icon results, exact tested versions,
   runtime regression commands and deployment-testing limits.
 - `PACKAGING.md`: local Arch build, install/removal and later publication requirements.
+- AUR package: https://aur.archlinux.org/packages/plasma6-themes-nobara-fixed.
+  Separate local checkout: `../aur-plasma6-themes-nobara-fixed`, branch `master`.
+  It contains only PKGBUILD and .SRCINFO; do not commit binary/source archives there.
 - `packaging/`: explicit install manifest, release-pinned PKGBUILD and generated .SRCINFO.
   Source/binary archives and build output are ignored by Git.
 - `tools/`: check scripts and packaging helpers (see Checks).

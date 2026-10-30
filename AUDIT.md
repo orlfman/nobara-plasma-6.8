@@ -13,6 +13,30 @@ original findings remain below as historical records.
 Priorities: P1 = fix before shipping anything, P2 = real bug or wrong behavior,
 P3 = cleanup, cosmetic, or dead code.
 
+## 2026-10-29: AUR submission verification — Codex (GPT-6)
+
+Reviewed v0.1.0 release recipe on theme HEAD `854e6f3`. User authorized submission
+and confirmed naming analogous to plasma6-themes-steamos-vapor-fixed.
+
+- Existing AUR SSH credentials authenticate as orlfman. Name lookup initially
+  returned no package; Nobara search found only unrelated GRUB/kernel packages.
+- Built in /tmp/nobara-aur-build-gtjbfvtl from only PKGBUILD/.SRCINFO, downloading
+  the public release source rather than using the local archive. SHA-256 and
+  all makepkg manifest/defaults/CSS/icon checks pass; full build succeeds.
+- Exact archive/source comparison passes: 1,950 files/links, 1,705 intact icon
+  links, correct ownership/modes/metadata and install scope. namcap has zero
+  errors and ten reviewed data/transitive dependency warnings as previously
+  explained. .SRCINFO is current and matches packaging/ byte for byte.
+- Pushed AUR root commit 132ec3e to master; only PKGBUILD and .SRCINFO included.
+  SSH list-repos confirms the package belongs to orlfman. After initial cache
+  lag, the public AUR RPC confirms name/version 0.1.0-1 and maintainer orlfman.
+- Updated main's installation docs only; release v0.1.0 source/binary assets,
+  checksums and tag remain immutable. No AUR recipe changes beyond release.
+
+No new defects found. This fresh-download test used CachyOS, not a clean Arch
+chroot. Previous live desktop/login/GPU limits remain; no package was installed
+or theme selected in the user's session.
+
 ## 2026-10-29: v0.1.0 release verification — Codex (GPT-6)
 
 Reviewed release preparation on parent HEAD `6323ed5`. No new theme/runtime
