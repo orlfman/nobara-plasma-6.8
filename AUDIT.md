@@ -13,6 +13,78 @@ original findings remain below as historical records.
 Priorities: P1 = fix before shipping anything, P2 = real bug or wrong behavior,
 P3 = cleanup, cosmetic, or dead code.
 
+## 2026-10-29: review of Codex's steps 1–5, release and AUR — Claude Code (Claude Opus 5.5)
+
+Reviewed `763b169..0e238ef` (theme HEAD `0e238ef`, tag `v0.1.0` = `854e6f3`),
+the GitHub release, the AUR package and the copy the user installed with paru
+(2026-10-29 22:04, `plasma6-themes-nobara-fixed 0.1.0-1`). Read-only review;
+no theme files changed.
+
+Verified:
+
+- Every theme edit against the original audit: findings 1–7, 9, 11–16 are
+  correctly resolved (polkit rule, hidden widget, scripts, units, `etc/`, SDDM,
+  lock screen folder and legacy metadata removed; `widgetStyle=Breeze`;
+  switcher/`[KSplash]`/`[breezerc]` lines removed; `plasmarc` carries the
+  ContrastEffect/AdaptiveTransparency/Wallpaper settings; Plasma style Id and
+  `ColorScheme=` fixed; Nobara Winds is a `Wallpaper/Images` package, really
+  3840×2160, set by `[Wallpaper] Image=Nobara`). Finding 8 kept by decision D5,
+  finding 10 deferred by D6, both as recorded.
+- Codex's correction of my original "Passed" note is right: the import's
+  `window_decorations.css` pointed at 24 `assets/*.svg` files that never existed.
+- Splash: the removed animation targeted `logo`, an `Image` whose source is
+  commented out, so nothing visible was lost. `root.stage` qualification fine.
+- GitHub: repo public, `v0.1.0` release has source, package, PKGBUILD, SRCINFO,
+  SHA256SUMS. The downloaded source asset's SHA-256 matches the PKGBUILD
+  (`f7792e81…`), and its contents equal `git archive v0.1.0` minus `.github/`,
+  `.gitignore` and `packaging/PKGBUILD`/`.SRCINFO`.
+- AUR: RPC shows 0.1.0-1, maintainer orlfman, same depends; the AUR checkout's
+  PKGBUILD and .SRCINFO are byte-identical to `packaging/`.
+- Installed package: `pacman -Qkk` 0 altered of 2,062; all 1,950 manifest
+  files/links equal the repo at HEAD byte for byte (links by target); 0 dangling
+  links in `/usr/share/icons/Nobara`.
+- Checks rerun at HEAD: `tools/check.sh` ALL CHECKS PASSED;
+  `tools/check-runtime.sh` 6 passed / 0 failed, splash idle 0 frames;
+  `tools/test-icon-builder.py` 4 OK; `build-icons.py --check` PASS (1,705 links);
+  `check-theme.py` PASS; `check-package.py --source` PASSED (1,950).
+- Process: all three Codex commits carry a `Co-Authored-By` trailer, identity is
+  the noreply address, PLAN.md says `In progress: nobody`, tree was clean.
+
+New findings (none block the release):
+
+- **N1 [P3] The Nobara GTK theme is an old copy of Breeze GTK.** The main
+  `gtk-3.0/gtk.css` and `gtk-4.0/gtk.css` define `theme_*_color_breeze` with
+  Breeze light values and differ from the installed Breeze GTK 6.8.2 files by
+  201 and 349 diff lines; the only hex colors that differ are two border
+  greys (`#bcbebf`/`#c2c3c4` vs Breeze's `#c6c8c9`/`#cdcdce`).
+  The dark variants import Breeze-Dark. Plasma's kde-gtk-config sets
+  `gtk-application-prefer-dark-theme` from the color scheme
+  (`kded/gtkconfig.cpp:291-294` at v6.8.2), and Nobara's scheme is dark, so
+  selecting "Nobara" in GTK settings gives exactly Breeze-Dark. In light use it
+  gives a slightly outdated Breeze. The theme adds no Nobara look; README's
+  "Nobara GTK 3/4 theme" could say so. Kept by the user's decision; not changed.
+- **N2 [P3] Icon overlay can go stale when Papirus updates.** 1,705 absolute
+  links point at 454 Papirus files (~600 KB). `check()` in the PKGBUILD catches
+  drift at build time, but an installed copy isn't rebuilt when only Papirus
+  updates; renamed targets would dangle until a new package release. Not
+  verified how KDE's loader treats a dangling link here (likely falls through to
+  Papirus-Dark's blue folder). Options: watch Papirus releases, or bundle the
+  454 violet files (Papirus is GPL-3.0) instead of linking.
+- **N3 [P3] Splash wallpaper stretches.** `Splash.qml`'s root `Image` has no
+  `fillMode`, so the 16:9 image stretches on 16:10/21:9 screens. Upstream
+  behavior; `fillMode: Image.PreserveAspectCrop` would fix it. No effect on this
+  PC's 16:9 monitors.
+- **N4 [P3] Docs.** `README.md:95` still says "the later AUR publication
+  requirements" and AGENTS.md didn't record that the user installed 0.1.0-1
+  (AGENTS.md updated in this review). The AUR checkout lives in
+  `../aur-plasma6-themes-nobara-fixed`, not in `~/Files/Archive/projects/aur/`
+  where the user's other AUR clones are.
+- Note: Konsole's black still equals the background (kept upstream on purpose,
+  per README). The Vapor project changed this; the user may want the same.
+
+Limits: no live login/session check; Papirus-update behavior reasoned from the
+link layout, not tested.
+
 ## 2026-10-29: AUR submission verification — Codex (GPT-6)
 
 Reviewed v0.1.0 release recipe on theme HEAD `854e6f3`. User authorized submission

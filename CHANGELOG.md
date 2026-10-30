@@ -3,6 +3,20 @@
 Newest first. One entry per agent session: date, agent, what changed, check
 results, anything left half done, what's next. See `AGENTS.md` for the rules.
 
+## 2026-10-29, Claude Code (Claude Opus 5.5): review of Codex's work
+
+- At the user's request, audited Codex's steps 1–5, the v0.1.0 GitHub release,
+  the AUR submission and the package the user installed with paru. No theme
+  files changed.
+- Confirmed: original findings resolved as recorded; release asset checksum and
+  contents match tag v0.1.0; AUR recipe matches packaging/; installed files
+  equal HEAD; every check suite passes at HEAD.
+- Four new P3 notes (AUDIT.md): the Nobara GTK theme is effectively an old
+  Breeze GTK copy (dark = Breeze-Dark); icon links can go stale on a Papirus
+  update; the splash image stretches on non-16:9 screens; small doc staleness.
+- Updated AUDIT.md (new review at top), AGENTS.md (user installed 0.1.0-1) and
+  this file. Uncommitted, at the user's call. In progress: nobody.
+
 ## 2026-10-29, Codex (GPT-6): AUR submission
 
 - User requested AUR publication and a name matching the Vapor package.

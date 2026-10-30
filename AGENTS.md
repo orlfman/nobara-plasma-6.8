@@ -171,6 +171,9 @@ Run after every change, from this folder:
   appearance settings; theme assets need to be installed globally. Offscreen
   mock-authentication loading was tested with isolated settings; actual login
   appearance/authentication have not been tested. See PLASMA-LOGIN.md.
+- The user installed `plasma6-themes-nobara-fixed 0.1.0-1` from the AUR with
+  paru (2026-10-29 22:04); its files equal this repo at `0e238ef`. Ask before
+  reinstalling, upgrading or removing it, or changing the active theme.
 - `breeze-gtk 6.8.2-1` is installed (confirmed during step 2) and is required
   by the preserved dark GTK variants. GTK 3/4 CSS parsing passes. GTK 2 was
   removed at the user's request during step 4. Live app appearance still needs
