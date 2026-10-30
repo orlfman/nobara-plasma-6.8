@@ -1,0 +1,7 @@
+# build and test output
+src/
+pkg/
+*.tar.gz
+*.pkg.tar.*
+*.log
+__pycache__/
