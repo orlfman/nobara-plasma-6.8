@@ -47,13 +47,14 @@ Konsole's ANSI black still matches its background, as it does upstream.
 ## Install on Arch Linux
 
 A local package recipe is included as **`plasma6-themes-nobara-fixed`**,
-version `0.1.0-1`. It has **not been published to the AUR** and there is no tagged
-release yet. Build from this repository with the dependencies below installed:
+version `0.1.0-1`. Download the source and prebuilt Arch package from
+[release v0.1.0](https://github.com/orlfman/nobara-plasma-6.8/releases/tag/v0.1.0).
+It has **not been published to the AUR**. Build the pinned release from source
+with the dependencies below installed:
 
 ```sh
-git clone https://github.com/orlfman/nobara-plasma-6.8.git
+git clone --branch v0.1.0 https://github.com/orlfman/nobara-plasma-6.8.git
 cd nobara-plasma-6.8
-python3 -I tools/prepare-package.py
 (cd packaging && makepkg --cleanbuild --clean)
 sudo pacman -U packaging/plasma6-themes-nobara-fixed-0.1.0-1-any.pkg.tar.zst
 ```
@@ -71,6 +72,9 @@ The package installs appearance resources and documentation system-wide. It
 does not select a theme, replace your panel, synchronize login settings or
 change screen locking/authentication. Avoid copying the entire source tree
 into `/usr`, because it contains the unrepaired Aurorae files.
+
+The release includes `SHA256SUMS` for its source, Arch package and build recipe.
+For a development snapshot, run `python3 -I tools/prepare-package.py` first.
 
 See [PACKAGING.md](PACKAGING.md) for package checks, removal instructions,
 reviewed packaging warnings and the later AUR publication requirements.

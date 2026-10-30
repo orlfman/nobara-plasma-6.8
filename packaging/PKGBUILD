@@ -1,6 +1,6 @@
 # Maintainer: orlfman <25542856+orlfman@users.noreply.github.com>
-# Local source snapshot. Regenerate with tools/prepare-package.py.
-# A public release URL must replace the local source before AUR publication.
+# Published source asset, pinned to this version and its SHA-256.
+# Local development snapshots: tools/prepare-package.py (bump version before releasing changes).
 pkgname=plasma6-themes-nobara-fixed
 pkgver=0.1.0
 pkgrel=1
@@ -16,8 +16,8 @@ checkdepends=('python')
 optdepends=('konsole: use the Nobara terminal profile and colors'
             'plasma-login-manager: apply Nobara appearance to the Plasma login screen')
 options=('!strip' '!debug')
-source=("$pkgname-$pkgver.tar.gz")
-sha256sums=('78daeb19e6132bdbae2e5c41cd7053010bd8108529058a27817b643fcfdcad7e')
+source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('f7792e814c7cd92b95e01aeded9984db3c395b96e96194c9c55e4cafa7d04a21')
 
 check() {
   cd "$pkgname-$pkgver"

@@ -6,7 +6,7 @@ passes exact-payload, KDE loader and existing structural/runtime checks. The
 binary excludes unrepaired Aurorae and source templates, retained in the source
 archive. Public source repository: https://github.com/orlfman/nobara-plasma-6.8.
 Stages 1–5 and GitHub setup are recorded in the initial adaptation commit.
-No installation, tagged release or AUR upload; live visual/login/GPU testing
+GitHub release v0.1.0 provides source and an Arch package. No installation or AUR upload; live visual/login/GPU testing
 and optional Aurorae repair remain deferred.
 
 In progress: nobody.
@@ -95,7 +95,7 @@ Reviewed KDE's plasma-login-manager at tag `v6.8.2` and the installed package
 - **D8: partially resolved.** Keep the Nobara Konsole theme (user confirmed
   2026-10-29). No Alacritty theme requested. The stage-5 local working package name is
   plasma6-themes-nobara-fixed; public repository is orlfman/nobara-plasma-6.8;
-  tagged releases and AUR publication require a later request.
+  v0.1.0 is released; later releases and AUR publication require a request.
 
 ## Icons: implemented in step 3
 
@@ -160,13 +160,15 @@ Steps 1–5 and the GitHub presentation/setup are committed on main. Public orig
 https://github.com/orlfman/nobara-plasma-6.8. README follows the Vapor project
 structure; contribution guidance and a bug-report form are included. Original
 import history and author/license notices are preserved. Generated source and
-binary archives remain local/ignored, with no tagged release or AUR upload.
+binary archives remain ignored by Git; v0.1.0 publishes them as release assets,
+with the build recipe and checksums. No AUR upload.
 
 The local package and source snapshot are in packaging/. Regenerate after
-source/docs changes, rebuild and compare against the current tree. A fresh
-clone must run tools/prepare-package.py before makepkg. Before an AUR upload,
-create an explicitly authorized pinned public source release and change the
-local-only recipe to its downloadable source. See PACKAGING.md.
+source/docs changes, rebuild and compare against the current tree. A release checkout
+can build directly with makepkg using the pinned downloadable source. Development
+snapshots use tools/prepare-package.py. Bump the version before publishing new
+source; never overwrite a published release asset. AUR submission still needs
+a separate request and clean-Arch validation. See PACKAGING.md.
 
 Full structural/GTK/QML checks, four icon-builder recovery cases, isolated splash/
 controller regressions and extracted-package KDE/icon probes pass. The package

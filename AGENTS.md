@@ -59,7 +59,7 @@ to Nobara's files. An untouched second copy is in `../nobara/kde-nobara`.
 - `PERFORMANCE.md`: measured splash/icon results, exact tested versions,
   runtime regression commands and deployment-testing limits.
 - `PACKAGING.md`: local Arch build, install/removal and later publication requirements.
-- `packaging/`: explicit install manifest, local PKGBUILD and generated .SRCINFO.
+- `packaging/`: explicit install manifest, release-pinned PKGBUILD and generated .SRCINFO.
   Source/binary archives and build output are ignored by Git.
 - `tools/`: check scripts and packaging helpers (see Checks).
 - Upstream sources: https://github.com/Nobara-Project/nobara-core-packages
@@ -133,7 +133,9 @@ Run after every change, from this folder:
   the fixture asserts the mock is loaded before invoking actions.
 - `python3 -I tools/prepare-package.py` snapshots the current working tree,
   including uncommitted changes, checksums the local source and refreshes .SRCINFO.
-  Run after source/docs changes and build with makepkg inside packaging/.
+  Use for development after source/docs changes; build with makepkg inside
+  packaging/. Bump pkgver before a new release, and never replace published
+  assets/checksums for an existing release version.
 - `python3 -I tools/check-package.py <package.pkg.tar.zst>` compares the actual
   archive against the current install manifest/source without extraction or
   installation. Aurorae and Plasma _templates must remain source-only.

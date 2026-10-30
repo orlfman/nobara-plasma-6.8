@@ -13,6 +13,25 @@ original findings remain below as historical records.
 Priorities: P1 = fix before shipping anything, P2 = real bug or wrong behavior,
 P3 = cleanup, cosmetic, or dead code.
 
+## 2026-10-29: v0.1.0 release verification — Codex (GPT-6)
+
+Reviewed release preparation on parent HEAD `6323ed5`. No new theme/runtime
+changes: only source URL, packaging/release instructions and handoff records.
+
+- Full tools/check.sh passes: scope/manifest, metadata/defaults, SVG integrity,
+  all 1,705 icon links, all four GTK CSS files, KDE discovery and QML/JS syntax.
+- The old package correctly failed current-tree comparison after release docs
+  changed; regenerated source and rebuilt it to include those exact documents.
+- Version 0.1.0 source is pinned to its GitHub release asset with a real SHA-256;
+  .SRCINFO is generated from that recipe. Built archive verification covers all
+  1,950 payload files/links, exact bytes, ownership/modes, deps and exclusions.
+- Release assets include source, Arch binary package, PKGBUILD, .SRCINFO and
+  SHA256SUMS. Tag points to the release-preparation commit; generated archives
+  stay outside Git. Source-only Aurorae/templates remain preserved.
+- No new findings. Previous runtime measurements/probes and reviewed namcap
+  warnings still apply; live desktop/login/GPU checks and clean-Arch build
+  validation remain pending. GitHub release does not imply AUR publication.
+
 ## 2026-10-29: GitHub setup and pre-push review — Codex (GPT-6)
 
 Reviewed the uncommitted adaptation on HEAD `763b169` before its initial GitHub

@@ -1,8 +1,11 @@
-# Local Arch packaging
+# Arch packaging
 
 The local package is `plasma6-themes-nobara-fixed`, version `0.1.0-1`, architecture
 `any`. This is the adaptation's own version, not Nobara's upstream version or a
 Plasma version. The name is a local working name; no AUR name has been reserved.
+Release v0.1.0 provides the pinned source archive, prebuilt Arch package,
+PKGBUILD, .SRCINFO and SHA256SUMS on
+[GitHub Releases](https://github.com/orlfman/nobara-plasma-6.8/releases/tag/v0.1.0).
 No package is installed or uploaded by the preparation/build commands below.
 
 ## Installed contents and dependencies
@@ -30,7 +33,15 @@ package does not enable or switch a display manager. Python is only a build
 check dependency. Standard Arch `base-devel` tools are needed to build; the
 additional developer/runtime checks also need the tools described in AGENTS.md.
 
-## Prepare and build
+## Build the pinned release
+
+From a checkout of tag `v0.1.0`, run `makepkg --cleanbuild --clean` inside
+`packaging/`. The recipe downloads the versioned release source and verifies
+its SHA-256. Alternatively, place the downloaded source archive beside the
+recipe to build offline. Verify downloaded release assets with
+`sha256sum -c SHA256SUMS` in the directory containing all five release assets.
+
+## Prepare a development snapshot
 
 Run from the repository root (`nobara-plasma-6.8` after cloning):
 
@@ -115,16 +126,18 @@ sudo pacman -R plasma6-themes-nobara-fixed
 Removal leaves personal settings and required dependencies alone. It cannot
 restore prior selections because the package never records or changes them.
 
-## Later publication
+## Later releases and AUR publication
 
-This recipe intentionally uses a local checksummed source archive. Before AUR
-submission, create an authorized pinned source release in
-[the GitHub project](https://github.com/orlfman/nobara-plasma-6.8), review the
-package name and version, replace `source` with its downloadable release URL
-and real checksum, regenerate `.SRCINFO`, and
-validate in a clean Arch build environment. Do not upload this local-only recipe
-as though its source were publicly downloadable. The GitHub source repository
-is public; no release or AUR publication has been made.
+The recipe now uses the pinned GitHub release source with its real checksum.
+Do not regenerate or replace an already published source asset under the same
+version. For later changes, bump pkgver, prepare and validate new source/package
+artifacts, refresh .SRCINFO, then publish a new tag/release when authorized.
+The snapshot helper intentionally updates the checksum for local development;
+do not publish that updated recipe against an older release's source URL.
+
+No AUR upload has been made. Before submission, review the package name/version
+and validate in a clean Arch build environment. GitHub release publication does
+not itself publish or update an AUR package.
 
 Packaging conventions follow the official
 [PKGBUILD manual](https://man.archlinux.org/man/PKGBUILD.5.en) and

@@ -3,6 +3,22 @@
 Newest first. One entry per agent session: date, agent, what changed, check
 results, anything left half done, what's next. See `AGENTS.md` for the rules.
 
+## 2026-10-29, Codex (GPT-6): v0.1.0 GitHub release
+
+- User authorized release publication. Prepared tag/release v0.1.0 with the
+  checksummed source archive, Arch package 0.1.0-1, PKGBUILD, .SRCINFO and SHA256SUMS.
+- Changed the recipe from local-only source to the version-pinned GitHub release
+  asset URL, keeping an actual SHA-256. Updated README/build instructions and
+  shared notes for release downloads versus development snapshots.
+- Full tools/check.sh passes; regenerated source and rebuilt/checked the package
+  for the release documentation. All 1,705 icon links and installation exclusions
+  remain intact. No theme artwork or palette changes; prior runtime checks apply.
+- Preserved prior test limits and documented required Papirus/Breeze components,
+  source-only Aurorae, and Plasma Login-only appearance support in release notes.
+- Release preparation committed and pushed; generated artifacts remain outside
+  Git history. No AUR upload, system installation or theme activation. In progress:
+  nobody. Later releases must use a new version rather than replacing assets.
+
 ## 2026-10-29, Codex (GPT-6): GitHub repository setup
 
 - User authorized creating/setup of the GitHub repository, using Vapor as the
