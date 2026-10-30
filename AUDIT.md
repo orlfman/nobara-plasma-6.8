@@ -28,7 +28,11 @@ Release of the GTK 3/4 wrapper (entry below), at the user's request.
 - namcap: 0 errors, the same 10 reviewed warnings as 0.1.0 (PACKAGING.md).
 - `tools/check.sh` ALL CHECKS PASSED.
 - Limits as before: CachyOS build, not a clean Arch chroot; no live session test.
-  The release download and AUR build are verified after publishing (CHANGELOG).
+- After publishing: all four downloaded v0.2.0 assets pass `sha256sum -c
+  SHA256SUMS`; a fresh build from only PKGBUILD/.SRCINFO downloaded the public
+  source, checksum Passed, check() passed, and `check-package.py` PASSED on that
+  package (same file list as the release package). AUR master `ac12c4a`
+  ("update to 0.2.0"); the AUR page and PKGBUILD show 0.2.0-1.
 
 ## 2026-10-29: GTK 3/4 wrapper (fixes N1) — Claude Code (Claude Opus 5.5)
 
